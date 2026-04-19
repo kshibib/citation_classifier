@@ -107,6 +107,9 @@ def main() -> None:
     st.markdown(
         """
         <style>
+        html, body, [class*="css"], [data-testid="stAppViewContainer"] {
+            font-family: Garamond, "Times New Roman", serif;
+        }
         div.stButton > button {
             background-color: #2f3640;
             color: white;
