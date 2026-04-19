@@ -6,6 +6,7 @@ from pathlib import Path
 
 import joblib
 import streamlit as st
+from st_keyup import st_keyup
 
 ROOT = Path(__file__).resolve().parent
 ICON_PATH = ROOT / "assets" / "ml_icon.svg"
@@ -143,10 +144,11 @@ def main() -> None:
     with st.spinner("Loading model..."):
         model, label_encoder = load_model_bundle(selected_model)
 
-    citation = st.text_area(
+    citation = st_keyup(
         "Citation",
-        height=160,
+        value="",
         placeholder="Example: 410 U.S. 113 (1973)",
+        key="citation_input",
     )
 
     cleaned = citation.strip()
