@@ -8,6 +8,7 @@ import joblib
 import streamlit as st
 
 ROOT = Path(__file__).resolve().parent
+ICON_PATH = ROOT / "assets" / "ml_icon.svg"
 
 DEFAULT_MODEL_DIRS = [
     ROOT / "deployed_models" / "linear_svm",
@@ -119,6 +120,8 @@ def main() -> None:
     st.caption(
         "Paste a single legal citation and classify it below."
     )
+    if ICON_PATH.exists():
+        st.image(str(ICON_PATH), width=110)
 
     available_models = discover_model_dirs()
     if not available_models:
