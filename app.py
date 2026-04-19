@@ -78,14 +78,7 @@ def render_prediction(prediction: str) -> None:
     st.markdown(
         f"""
         <div class="prediction-value">
-          <span style="
-            color:{color};
-            font-weight:700;
-            font-size:1.55rem;
-            padding:0.2rem 0.45rem;
-            border-radius:0.35rem;
-            display:inline-block;
-          ">{prediction}</span>
+          <span class="prediction-text" style="color:{color};">{prediction}</span>
         </div>
         """,
         unsafe_allow_html=True,
@@ -104,56 +97,63 @@ def main() -> None:
         <style>
         :root {
             --app-font: "Times New Roman", Times, serif;
-            --size-title: 2.35rem;
-            --size-caption: 1.15rem;
-            --size-label: 1.2rem;
-            --size-control: 1.15rem;
-            --size-control-small: 1.1rem;
-            --size-prediction-label: 1.35rem;
+            --size-base: 1rem;
+            --size-title: 2.25rem;
+            --size-prediction-label: 1.15rem;
+            --size-prediction-value: 1.35rem;
             --weight-bold: 700;
         }
-        html, body, .stApp, .stApp *, [class*="css"], [class*="st-"], [data-testid] {
-            font-family: var(--app-font);
+        html {
+            font-size: 16px;
+        }
+        html, body, .stApp, .stApp *, [class*="css"], [class*="st-"], [data-testid],
+        [data-baseweb], input, textarea, select, option, button, label, p, span, div {
+            font-family: var(--app-font) !important;
+            font-size: var(--size-base);
         }
         .app-title {
-            margin: 0 0 0.2rem 0;
-            font-size: var(--size-title);
+            margin: 0 0 0.25rem 0;
+            font-size: var(--size-title) !important;
             font-weight: var(--weight-bold);
             line-height: 1.15;
         }
         .prediction-label {
             margin-top: 1rem;
-            font-size: var(--size-prediction-label);
+            font-size: var(--size-prediction-label) !important;
             font-weight: var(--weight-bold);
             line-height: 1.2;
         }
         .prediction-value {
             margin-top: 0.5rem;
         }
-        [data-testid="stCaptionContainer"] {
-            font-size: var(--size-caption);
+        .prediction-text {
+            font-size: var(--size-prediction-value) !important;
+            font-weight: var(--weight-bold);
+            padding: 0.2rem 0.45rem;
+            border-radius: 0.35rem;
+            display: inline-block;
         }
-        [data-testid="stCaptionContainer"] p {
-            font-size: var(--size-caption);
-            line-height: 1.35;
+        [data-testid="stCaptionContainer"],
+        [data-testid="stCaptionContainer"] p,
+        [data-testid="stWidgetLabel"] p,
+        div[data-baseweb="select"] > div,
+        div[data-baseweb="select"] span,
+        div[data-baseweb="input"] > div,
+        input[type="text"],
+        input[type="text"]::placeholder,
+        [data-testid="stMarkdownContainer"] p,
+        [data-testid="stAlertContent"],
+        [data-testid="stSpinner"] * {
+            font-family: var(--app-font) !important;
+            font-size: var(--size-base) !important;
         }
         [data-testid="stWidgetLabel"] p {
-            font-size: var(--size-label);
             font-weight: var(--weight-bold);
         }
-        div[data-baseweb="select"] > div {
-            font-size: var(--size-control-small);
-            min-height: 3rem;
-        }
-        div[data-baseweb="select"] span {
-            font-size: var(--size-control-small);
-        }
+        div[data-baseweb="select"] > div,
+        div[data-baseweb="input"] > div,
         input[type="text"] {
-            font-size: var(--size-control) !important;
             min-height: 3rem;
-        }
-        input[type="text"]::placeholder {
-            font-size: 1.05rem;
         }
         </style>
         """,
