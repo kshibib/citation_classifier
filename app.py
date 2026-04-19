@@ -136,6 +136,7 @@ def main() -> None:
         "Model",
         options=list(model_labels.keys()),
         format_func=lambda path: model_labels[path],
+        disabled=(len(available_models) == 1),
     )
 
     with st.spinner("Loading model..."):
