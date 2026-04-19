@@ -108,14 +108,14 @@ def main() -> None:
         """
         <style>
         div.stButton > button {
-            background-color: #2e7d32;
+            background-color: #2f3640;
             color: white;
             font-weight: 700;
-            border: 1px solid #2e7d32;
+            border: 1px solid #2f3640;
         }
         div.stButton > button:hover {
-            background-color: #256628;
-            border-color: #256628;
+            background-color: #252b33;
+            border-color: #252b33;
             color: white;
         }
         </style>
