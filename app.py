@@ -111,6 +111,30 @@ def main() -> None:
         html, body, .stApp, .stApp *, [class*="css"], [class*="st-"], [data-testid] {
             font-family: "Times New Roman", Times, serif;
         }
+        [data-testid="stCaptionContainer"] {
+            font-size: 1.15rem;
+        }
+        [data-testid="stCaptionContainer"] p {
+            font-size: 1.15rem;
+        }
+        [data-testid="stWidgetLabel"] p {
+            font-size: 1.2rem;
+            font-weight: 700;
+        }
+        div[data-baseweb="select"] > div {
+            font-size: 1.1rem;
+            min-height: 3rem;
+        }
+        div[data-baseweb="select"] span {
+            font-size: 1.1rem;
+        }
+        input[type="text"] {
+            font-size: 1.15rem !important;
+            min-height: 3rem;
+        }
+        input[type="text"]::placeholder {
+            font-size: 1.05rem;
+        }
         </style>
         """,
         unsafe_allow_html=True,
