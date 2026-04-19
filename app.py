@@ -107,7 +107,7 @@ def main() -> None:
     st.markdown(
         """
         <style>
-        html, body, [class*="css"], [data-testid="stAppViewContainer"] {
+        html, body, .stApp, .stApp *, [class*="css"], [class*="st-"], [data-testid] {
             font-family: "Times New Roman", Times, serif;
         }
         div.stButton > button {
