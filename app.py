@@ -100,7 +100,7 @@ def render_prediction(prediction: str) -> None:
 
 def main() -> None:
     st.set_page_config(
-        page_title="Shibib's ML Citation Classifier",
+        page_title="Shibib’s ML Citation Classifier",
         page_icon="L",
         layout="centered",
     )
@@ -116,7 +116,7 @@ def main() -> None:
         unsafe_allow_html=True,
     )
 
-    st.title("Shibib's ML Citation Classifier")
+    st.title("Shibib’s ML Citation Classifier")
     st.caption(
         "Paste a single legal citation and classify it below."
     )
