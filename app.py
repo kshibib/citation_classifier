@@ -74,8 +74,8 @@ def render_prediction(prediction: str) -> None:
         color = "#7b1fa2"
         background = "transparent"
     elif prediction == "unknown":
-        color = "#ffffff"
-        background = "#333333"
+        color = "#c7ccd6"
+        background = "transparent"
     else:
         color = "#14243d"
         background = "transparent"
