@@ -65,10 +65,10 @@ def load_model_bundle(model_dir: str) -> tuple[object, object]:
 def render_prediction(prediction: str) -> None:
     """Render the prediction using label-specific colors."""
     if prediction in FEDERAL_LABELS:
-        color = "#1f5aa6"
+        color = "#5fb8ff"
         background = "transparent"
     elif prediction in STATE_LABELS:
-        color = "#c62828"
+        color = "#ff6b6b"
         background = "transparent"
     elif prediction == "case":
         color = "#7b1fa2"
@@ -87,7 +87,7 @@ def render_prediction(prediction: str) -> None:
             color:{color};
             background:{background};
             font-weight:700;
-            font-size:1.1rem;
+            font-size:1.55rem;
             padding:0.2rem 0.45rem;
             border-radius:0.35rem;
             display:inline-block;
