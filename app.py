@@ -156,9 +156,6 @@ def main() -> None:
     else:
         st.info("Enter a citation to see a prediction.")
 
-    with st.expander("Available labels"):
-        st.write(", ".join(label_encoder.classes_.tolist()))
-
 
 if __name__ == "__main__":
     main()
