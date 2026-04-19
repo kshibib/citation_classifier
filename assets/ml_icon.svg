@@ -1,0 +1,77 @@
+<svg width="256" height="256" viewBox="0 0 256 256" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="256" height="256" rx="28" fill="#131126"/>
+  <defs>
+    <filter id="glowBlue" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="3.5" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <filter id="glowGold" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="3.5" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <linearGradient id="gearBody" x1="96" y1="128" x2="160" y2="192" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#D7ECFF"/>
+      <stop offset="1" stop-color="#6389FF"/>
+    </linearGradient>
+  </defs>
+
+  <g filter="url(#glowBlue)" stroke="#8DE7FF" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M72 96C56 96 46 84 46 68C46 52 58 40 74 40C78 28 90 20 104 20C122 20 136 34 136 52V108"/>
+    <path d="M72 96H100"/>
+    <path d="M74 72H98"/>
+    <path d="M98 52V108"/>
+    <circle cx="84" cy="52" r="3.5" fill="#8DE7FF" stroke="none"/>
+    <circle cx="98" cy="72" r="3.5" fill="#8DE7FF" stroke="none"/>
+    <circle cx="98" cy="96" r="3.5" fill="#8DE7FF" stroke="none"/>
+  </g>
+
+  <g filter="url(#glowGold)" stroke="#FFBE1A" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M184 96C200 96 210 84 210 68C210 52 198 40 182 40C178 28 166 20 152 20C134 20 120 34 120 52V108"/>
+    <path d="M184 96H156"/>
+    <path d="M182 72H158"/>
+    <path d="M158 52V108"/>
+    <circle cx="172" cy="52" r="3.5" fill="#FFBE1A" stroke="none"/>
+    <circle cx="158" cy="72" r="3.5" fill="#FFBE1A" stroke="none"/>
+    <circle cx="158" cy="96" r="3.5" fill="#FFBE1A" stroke="none"/>
+  </g>
+
+  <g>
+    <path d="M128 106L136 112L146 110L150 120L160 124L158 134L164 142L156 150L158 160L148 164L144 174L134 172L126 178L118 172L108 174L104 164L94 160L96 150L88 142L96 134L94 124L104 120L108 110L118 112L128 106Z" fill="url(#gearBody)" stroke="#92C8FF" stroke-width="4"/>
+    <circle cx="126" cy="142" r="16" fill="#FFC700" stroke="#FFB000" stroke-width="5"/>
+  </g>
+
+  <g filter="url(#glowBlue)" stroke="#7CCEFF" stroke-width="4.5" stroke-linecap="round">
+    <path d="M110 172L92 192"/>
+    <path d="M92 192L72 204"/>
+    <circle cx="72" cy="204" r="8" fill="#131126"/>
+    <path d="M124 178V206"/>
+    <circle cx="124" cy="218" r="8" fill="#131126"/>
+    <path d="M102 166L82 170"/>
+  </g>
+
+  <g filter="url(#glowGold)" stroke="#FFBE1A" stroke-width="4.5" stroke-linecap="round">
+    <path d="M142 172L160 192"/>
+    <path d="M160 192L184 204"/>
+    <circle cx="184" cy="204" r="8" fill="#131126"/>
+    <path d="M134 178V206"/>
+    <circle cx="134" cy="218" r="8" fill="#131126"/>
+    <path d="M150 166L170 170"/>
+  </g>
+
+  <g opacity="0.95">
+    <circle cx="34" cy="116" r="3" fill="#8DE7FF"/>
+    <circle cx="50" cy="104" r="2" fill="#8DE7FF"/>
+    <circle cx="206" cy="118" r="3" fill="#FFBE1A"/>
+    <circle cx="220" cy="104" r="2" fill="#FFBE1A"/>
+    <path d="M28 82H38" stroke="#8DE7FF" stroke-width="3" stroke-linecap="round"/>
+    <path d="M33 77V87" stroke="#8DE7FF" stroke-width="3" stroke-linecap="round"/>
+    <path d="M214 82H224" stroke="#FFBE1A" stroke-width="3" stroke-linecap="round"/>
+    <path d="M219 77V87" stroke="#FFBE1A" stroke-width="3" stroke-linecap="round"/>
+  </g>
+</svg>
