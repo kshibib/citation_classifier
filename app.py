@@ -202,8 +202,6 @@ def main() -> None:
             unsafe_allow_html=True,
         )
         render_prediction(prediction)
-    else:
-        st.info("Enter a citation to see a prediction.")
 
 
 if __name__ == "__main__":
