@@ -110,19 +110,6 @@ def main() -> None:
         html, body, .stApp, .stApp *, [class*="css"], [class*="st-"], [data-testid] {
             font-family: "Times New Roman", Times, serif;
         }
-        div.stButton > button {
-            background-color: #f57c00;
-            color: white;
-            font-weight: 700;
-            font-size: 1.05rem;
-            padding: 0.55rem 1.15rem;
-            border: 1px solid #f57c00;
-        }
-        div.stButton > button:hover {
-            background-color: #dd6f00;
-            border-color: #dd6f00;
-            color: white;
-        }
         </style>
         """,
         unsafe_allow_html=True,
@@ -159,19 +146,16 @@ def main() -> None:
         placeholder="Example: 410 U.S. 113 (1973)",
     )
 
-    classify = st.button("Classify", type="primary")
+    cleaned = citation.strip()
+    if cleaned:
+        prediction = model.predict([cleaned])[0]
+        st.subheader("Prediction")
+        render_prediction(prediction)
+    else:
+        st.info("Enter a citation to see a prediction.")
 
-    if classify:
-        cleaned = citation.strip()
-        if not cleaned:
-            st.warning("Enter a citation first.")
-        else:
-            prediction = model.predict([cleaned])[0]
-            st.subheader("Prediction")
-            render_prediction(prediction)
-
-            with st.expander("Available labels"):
-                st.write(", ".join(label_encoder.classes_.tolist()))
+    with st.expander("Available labels"):
+        st.write(", ".join(label_encoder.classes_.tolist()))
 
 
 if __name__ == "__main__":
