@@ -2,17 +2,12 @@
 
 from __future__ import annotations
 
-import sys
 from pathlib import Path
 
+import joblib
 import streamlit as st
 
 ROOT = Path(__file__).resolve().parent
-SRC = ROOT / "src"
-if str(SRC) not in sys.path:
-    sys.path.insert(0, str(SRC))
-
-from citation_classifier.modeling import load_artifact
 
 DEFAULT_MODEL_DIRS = [
     ROOT / "deployed_models" / "linear_svm",
@@ -40,8 +35,8 @@ def discover_model_dirs() -> list[Path]:
 def load_model_bundle(model_dir: str) -> tuple[object, object]:
     """Load a saved model and label encoder."""
     directory = Path(model_dir)
-    model = load_artifact(directory / "model.joblib")
-    label_encoder = load_artifact(directory / "label_encoder.joblib")
+    model = joblib.load(directory / "model.joblib")
+    label_encoder = joblib.load(directory / "label_encoder.joblib")
     return model, label_encoder
 
 
