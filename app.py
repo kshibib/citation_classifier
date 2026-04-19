@@ -108,7 +108,7 @@ def main() -> None:
         """
         <style>
         html, body, [class*="css"], [data-testid="stAppViewContainer"] {
-            font-family: Garamond, "Times New Roman", serif;
+            font-family: "Times New Roman", Times, serif;
         }
         div.stButton > button {
             background-color: #2f3640;
