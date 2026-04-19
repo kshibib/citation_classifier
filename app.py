@@ -140,10 +140,15 @@ def main() -> None:
         unsafe_allow_html=True,
     )
 
-    st.title("Shibib’s ML Citation Classifier")
-    st.caption(
-        "Paste a single legal citation and classify it below."
+    st.markdown(
+        """
+        <h1 style="margin-bottom:0.2rem; font-size:2.35rem; font-weight:700;">
+            Shibib’s ML Citation Classifier
+        </h1>
+        """,
+        unsafe_allow_html=True,
     )
+    st.caption("Paste a single legal citation and classify it below.")
 
     available_models = discover_model_dirs()
     if not available_models:
@@ -176,7 +181,14 @@ def main() -> None:
     cleaned = citation.strip()
     if cleaned:
         prediction = model.predict([cleaned])[0]
-        st.subheader("Prediction:")
+        st.markdown(
+            """
+            <div style="margin-top:1rem; font-size:1.35rem; font-weight:700;">
+                Prediction:
+            </div>
+            """,
+            unsafe_allow_html=True,
+        )
         render_prediction(prediction)
     else:
         st.info("Enter a citation to see a prediction.")
