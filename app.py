@@ -152,7 +152,7 @@ def main() -> None:
     cleaned = citation.strip()
     if cleaned:
         prediction = model.predict([cleaned])[0]
-        st.subheader("Prediction")
+        st.subheader("Prediction:")
         render_prediction(prediction)
     else:
         st.info("Enter a citation to see a prediction.")
