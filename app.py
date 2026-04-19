@@ -66,26 +66,20 @@ def render_prediction(prediction: str) -> None:
     """Render the prediction using label-specific colors."""
     if prediction in FEDERAL_LABELS:
         color = "#5fb8ff"
-        background = "transparent"
     elif prediction in STATE_LABELS:
         color = "#ff6b6b"
-        background = "transparent"
     elif prediction == "case":
         color = "#7b1fa2"
-        background = "transparent"
     elif prediction == "unknown":
         color = "#c7ccd6"
-        background = "transparent"
     else:
         color = "#14243d"
-        background = "transparent"
 
     st.markdown(
         f"""
-        <div style="margin-top:0.5rem;">
+        <div class="prediction-value">
           <span style="
             color:{color};
-            background:{background};
             font-weight:700;
             font-size:1.55rem;
             padding:0.2rem 0.45rem;
@@ -108,28 +102,54 @@ def main() -> None:
     st.markdown(
         """
         <style>
+        :root {
+            --app-font: "Times New Roman", Times, serif;
+            --size-title: 2.35rem;
+            --size-caption: 1.15rem;
+            --size-label: 1.2rem;
+            --size-control: 1.15rem;
+            --size-control-small: 1.1rem;
+            --size-prediction-label: 1.35rem;
+            --weight-bold: 700;
+        }
         html, body, .stApp, .stApp *, [class*="css"], [class*="st-"], [data-testid] {
-            font-family: "Times New Roman", Times, serif;
+            font-family: var(--app-font);
+        }
+        .app-title {
+            margin: 0 0 0.2rem 0;
+            font-size: var(--size-title);
+            font-weight: var(--weight-bold);
+            line-height: 1.15;
+        }
+        .prediction-label {
+            margin-top: 1rem;
+            font-size: var(--size-prediction-label);
+            font-weight: var(--weight-bold);
+            line-height: 1.2;
+        }
+        .prediction-value {
+            margin-top: 0.5rem;
         }
         [data-testid="stCaptionContainer"] {
-            font-size: 1.15rem;
+            font-size: var(--size-caption);
         }
         [data-testid="stCaptionContainer"] p {
-            font-size: 1.15rem;
+            font-size: var(--size-caption);
+            line-height: 1.35;
         }
         [data-testid="stWidgetLabel"] p {
-            font-size: 1.2rem;
-            font-weight: 700;
+            font-size: var(--size-label);
+            font-weight: var(--weight-bold);
         }
         div[data-baseweb="select"] > div {
-            font-size: 1.1rem;
+            font-size: var(--size-control-small);
             min-height: 3rem;
         }
         div[data-baseweb="select"] span {
-            font-size: 1.1rem;
+            font-size: var(--size-control-small);
         }
         input[type="text"] {
-            font-size: 1.15rem !important;
+            font-size: var(--size-control) !important;
             min-height: 3rem;
         }
         input[type="text"]::placeholder {
@@ -141,11 +161,7 @@ def main() -> None:
     )
 
     st.markdown(
-        """
-        <h1 style="margin-bottom:0.2rem; font-size:2.35rem; font-weight:700;">
-            Shibib’s ML Citation Classifier
-        </h1>
-        """,
+        '<h1 class="app-title">Shibib’s ML Citation Classifier</h1>',
         unsafe_allow_html=True,
     )
     st.caption("Paste a single legal citation and classify it below.")
@@ -169,7 +185,7 @@ def main() -> None:
     )
 
     with st.spinner("Loading model..."):
-        model, label_encoder = load_model_bundle(selected_model)
+        model, _label_encoder = load_model_bundle(selected_model)
 
     citation = st_keyup(
         "Citation",
@@ -182,11 +198,7 @@ def main() -> None:
     if cleaned:
         prediction = model.predict([cleaned])[0]
         st.markdown(
-            """
-            <div style="margin-top:1rem; font-size:1.35rem; font-weight:700;">
-                Prediction:
-            </div>
-            """,
+            '<div class="prediction-label">Prediction:</div>',
             unsafe_allow_html=True,
         )
         render_prediction(prediction)
