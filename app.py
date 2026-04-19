@@ -111,14 +111,16 @@ def main() -> None:
             font-family: "Times New Roman", Times, serif;
         }
         div.stButton > button {
-            background-color: #2f3640;
+            background-color: #f57c00;
             color: white;
             font-weight: 700;
-            border: 1px solid #2f3640;
+            font-size: 1.05rem;
+            padding: 0.55rem 1.15rem;
+            border: 1px solid #f57c00;
         }
         div.stButton > button:hover {
-            background-color: #252b33;
-            border-color: #252b33;
+            background-color: #dd6f00;
+            border-color: #dd6f00;
             color: white;
         }
         </style>
