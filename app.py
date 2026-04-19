@@ -194,13 +194,14 @@ def main() -> None:
         key="citation_input",
     )
 
+    st.markdown(
+        '<div class="prediction-label">Prediction:</div>',
+        unsafe_allow_html=True,
+    )
+
     cleaned = citation.strip()
     if cleaned:
         prediction = model.predict([cleaned])[0]
-        st.markdown(
-            '<div class="prediction-label">Prediction:</div>',
-            unsafe_allow_html=True,
-        )
         render_prediction(prediction)
 
 
