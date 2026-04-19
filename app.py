@@ -119,6 +119,7 @@ def main() -> None:
         }
         .prediction-label {
             margin-top: 1rem;
+            padding-left: 0.45rem;
             font-size: var(--size-prediction-label) !important;
             font-weight: var(--weight-bold);
             line-height: 1.2;
