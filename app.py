@@ -19,6 +19,27 @@ DEFAULT_MODEL_DIRS = [
     ROOT / "outputs" / "logistic_run",
 ]
 
+FEDERAL_LABELS = {
+    "federal_app_case",
+    "federal_constitution",
+    "federal_docket",
+    "federal_executive_order",
+    "federal_regulation",
+    "federal_rule",
+    "federal_statute",
+    "federal_trial_case",
+}
+
+STATE_LABELS = {
+    "state_app_case",
+    "state_constitution",
+    "state_executive_order",
+    "state_regulation",
+    "state_rule",
+    "state_statute",
+    "state_trial_case",
+}
+
 
 def discover_model_dirs() -> list[Path]:
     """Return model directories that contain both required artifacts."""
@@ -40,16 +61,71 @@ def load_model_bundle(model_dir: str) -> tuple[object, object]:
     return model, label_encoder
 
 
+def render_prediction(prediction: str) -> None:
+    """Render the prediction using label-specific colors."""
+    if prediction in FEDERAL_LABELS:
+        color = "#1f5aa6"
+        background = "transparent"
+    elif prediction in STATE_LABELS:
+        color = "#c62828"
+        background = "transparent"
+    elif prediction == "case":
+        color = "#7b1fa2"
+        background = "transparent"
+    elif prediction == "unknown":
+        color = "#ffffff"
+        background = "#333333"
+    else:
+        color = "#14243d"
+        background = "transparent"
+
+    st.markdown(
+        f"""
+        <div style="margin-top:0.5rem;">
+          <span style="
+            color:{color};
+            background:{background};
+            font-weight:700;
+            font-size:1.1rem;
+            padding:0.2rem 0.45rem;
+            border-radius:0.35rem;
+            display:inline-block;
+          ">{prediction}</span>
+        </div>
+        """,
+        unsafe_allow_html=True,
+    )
+
+
 def main() -> None:
     st.set_page_config(
-        page_title="Legal Citation Classifier",
+        page_title="Shibib's ML Citation Classifier",
         page_icon="L",
         layout="centered",
     )
 
-    st.title("Legal Citation Classifier")
+    st.markdown(
+        """
+        <style>
+        div.stButton > button {
+            background-color: #2e7d32;
+            color: white;
+            font-weight: 700;
+            border: 1px solid #2e7d32;
+        }
+        div.stButton > button:hover {
+            background-color: #256628;
+            border-color: #256628;
+            color: white;
+        }
+        </style>
+        """,
+        unsafe_allow_html=True,
+    )
+
+    st.title("Shibib's ML Citation Classifier")
     st.caption(
-        "Paste a single legal citation and classify it with the saved baseline model."
+        "Paste a single legal citation and classify it below."
     )
 
     available_models = discover_model_dirs()
@@ -87,22 +163,10 @@ def main() -> None:
         else:
             prediction = model.predict([cleaned])[0]
             st.subheader("Prediction")
-            st.code(prediction, language="text")
+            render_prediction(prediction)
 
             with st.expander("Available labels"):
                 st.write(", ".join(label_encoder.classes_.tolist()))
-
-    st.divider()
-    st.markdown(
-        """
-        **Deploy notes**
-
-        This app expects two files in the selected model directory:
-        `model.joblib` and `label_encoder.joblib`.
-        For GitHub deployment, the easiest option is to commit one model directory
-        under `deployed_models/linear_svm/`.
-        """
-    )
 
 
 if __name__ == "__main__":
