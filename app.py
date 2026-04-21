@@ -107,7 +107,6 @@ def main() -> None:
         }
         html, body, .stApp, .stApp *, [class*="css"], [class*="st-"], [data-testid],
         [data-baseweb], input, textarea, select, option, button, label, p, span, div {
-            font-family: var(--app-font) !important;
             font-size: var(--size-base);
         }
         .app-title {
@@ -144,7 +143,6 @@ def main() -> None:
         [data-testid="stMarkdownContainer"] p,
         [data-testid="stAlertContent"],
         [data-testid="stSpinner"] * {
-            font-family: var(--app-font) !important;
             font-size: var(--size-base) !important;
         }
         [data-testid="stWidgetLabel"] p {
@@ -161,7 +159,7 @@ def main() -> None:
     )
 
     st.markdown(
-        '<h1 class="app-title">Shibib’s ML Citation Classifier</h1>',
+        '<h1 class="app-title">ML Citation Classifier</h1>',
         unsafe_allow_html=True,
     )
     st.caption("Paste a single legal citation and classify it below.")
