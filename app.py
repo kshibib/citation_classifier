@@ -186,9 +186,8 @@ def main() -> None:
         model, _label_encoder = load_model_bundle(selected_model)
 
     citation = st_keyup(
-        "Citation",
         value="",
-        placeholder="Example: 410 U.S. 113 (1973)",
+        placeholder="",
         key="citation_input",
     )
 
