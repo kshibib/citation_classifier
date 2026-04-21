@@ -73,7 +73,7 @@ def render_prediction(prediction: str) -> None:
     elif prediction == "unknown":
         color = "#c7ccd6"
     else:
-        color = "#14243d"
+        color = "#3f8635"
 
     st.markdown(
         f"""
@@ -96,7 +96,6 @@ def main() -> None:
         """
         <style>
         :root {
-            --app-font: "Times New Roman", Times, serif;
             --size-base: 1rem;
             --size-title: 2.25rem;
             --size-prediction-label: 1.15rem;
