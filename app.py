@@ -9,6 +9,7 @@ import streamlit as st
 from st_keyup import st_keyup
 
 ROOT = Path(__file__).resolve().parent
+LOGO_PATH = ROOT / "assets" / "KS_Icon_Transparent.png"
 
 DEFAULT_MODEL_DIRS = [
     ROOT / "deployed_models" / "linear_svm",
@@ -157,6 +158,10 @@ def main() -> None:
         """,
         unsafe_allow_html=True,
     )
+
+    logo_col = st.columns([1, 1.4, 1])[1]
+    with logo_col:
+        st.image(str(LOGO_PATH), width=320)
 
     st.markdown(
         '<h1 class="app-title">ML Citation Classifier</h1>',
