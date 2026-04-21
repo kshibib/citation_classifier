@@ -159,9 +159,9 @@ def main() -> None:
         unsafe_allow_html=True,
     )
 
-    logo_col = st.columns([1, 1.4, 1])[1]
+    logo_col = st.columns([1, 1.2, 1])[1]
     with logo_col:
-        st.image(str(LOGO_PATH), width=320)
+        st.image(str(LOGO_PATH), width=260)
 
     st.markdown(
         '<h1 class="app-title">ML Citation Classifier</h1>',
